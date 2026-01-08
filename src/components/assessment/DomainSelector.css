@@ -1,0 +1,92 @@
+.domain-selector {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+.domain-selector-title {
+    font-size: 1rem;
+    color: #6b7280;
+    margin: 0 0 1rem 0;
+    font-weight: 600;
+}
+
+.domain-tabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+}
+
+.domain-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.domain-tab:hover {
+    border-color: #667eea;
+    background: rgba(102, 126, 234, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.domain-tab.active {
+    border-color: #667eea;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.domain-tab.complete {
+    border-color: #10b981;
+}
+
+.domain-icon {
+    font-size: 1.5rem;
+}
+
+.domain-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.domain-name {
+    font-weight: 600;
+    color: #374151;
+    font-size: 0.95rem;
+    line-height: 1.2;
+}
+
+.domain-progress {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    color: #10b981;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+@media (max-width: 768px) {
+    .domain-tabs {
+        grid-template-columns: 1fr;
+    }
+
+    .domain-tab {
+        padding: 0.875rem;
+    }
+}

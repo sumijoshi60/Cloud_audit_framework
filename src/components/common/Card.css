@@ -1,0 +1,37 @@
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.card-content {
+    color: #4b5563;
+}
+
+.card-highlight {
+    border: 2px solid #667eea;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+}
+
+.card-danger {
+    border: 2px solid #ef4444;
+    background: rgba(239, 68, 68, 0.05);
+}
+
+.card-success {
+    border: 2px solid #10b981;
+    background: rgba(16, 185, 129, 0.05);
+}

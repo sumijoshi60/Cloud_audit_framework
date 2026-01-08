@@ -1,0 +1,65 @@
+.assessment-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.assessment-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.assessment-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 1.5rem 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.current-domain-info {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.domain-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.domain-icon {
+    font-size: 2rem;
+}
+
+.domain-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.navigation-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    .assessment-title {
+        font-size: 1.5rem;
+    }
+
+    .navigation-buttons {
+        flex-direction: column;
+    }
+
+    .navigation-buttons button {
+        width: 100%;
+    }
+}

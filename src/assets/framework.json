@@ -1,0 +1,891 @@
+{
+    "version": "1.0",
+    "domains": [
+        {
+            "id": "iam",
+            "name": "Identity & Access Management",
+            "weight": 0.20,
+            "description": "Evaluate authentication, authorization, and user access controls",
+            "icon": "🔐",
+            "questions": [
+                {
+                    "id": "iam-1",
+                    "text": "Is Multi-Factor Authentication (MFA) enabled for all privileged users?",
+                    "category": "authentication",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Excellent! Continue enforcing MFA for all privileged accounts.",
+                        "partial": "Extend MFA coverage to all privileged users immediately.",
+                        "no": "CRITICAL: Implement MFA for all privileged accounts to prevent unauthorized access."
+                    }
+                },
+                {
+                    "id": "iam-2",
+                    "text": "Are user permissions reviewed and updated regularly (at least quarterly)?",
+                    "category": "authorization",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Great practice! Maintain regular access reviews to prevent privilege creep.",
+                        "partial": "Establish a formal quarterly access review process.",
+                        "no": "HIGH RISK: Implement regular access reviews to ensure least privilege principle."
+                    }
+                },
+                {
+                    "id": "iam-3",
+                    "text": "Is the principle of least privilege enforced for all user roles?",
+                    "category": "authorization",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Well done! Continue applying least privilege across all roles.",
+                        "partial": "Review and restrict excessive permissions to align with job functions.",
+                        "no": "CRITICAL: Over-permissioned accounts increase attack surface significantly."
+                    }
+                },
+                {
+                    "id": "iam-4",
+                    "text": "Are service accounts and API keys rotated regularly?",
+                    "category": "credentials",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Excellent credential hygiene! Keep rotating keys on schedule.",
+                        "partial": "Implement automated key rotation for all service accounts.",
+                        "no": "HIGH RISK: Static credentials are vulnerable to compromise."
+                    }
+                },
+                {
+                    "id": "iam-5",
+                    "text": "Is Single Sign-On (SSO) implemented for centralized authentication?",
+                    "category": "authentication",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Great! SSO simplifies access management and improves security.",
+                        "partial": "Expand SSO coverage to all cloud applications.",
+                        "no": "Consider implementing SSO to reduce credential sprawl and improve auditability."
+                    }
+                }
+            ]
+        },
+        {
+            "id": "network-security",
+            "name": "Network Security",
+            "weight": 0.15,
+            "description": "Assess network segmentation, firewall rules, and perimeter security",
+            "icon": "🌐",
+            "questions": [
+                {
+                    "id": "net-1",
+                    "text": "Are network security groups/firewalls configured to deny all traffic by default?",
+                    "category": "firewall",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Excellent! Default-deny reduces attack surface significantly.",
+                        "partial": "Review and tighten firewall rules to enforce default-deny.",
+                        "no": "CRITICAL: Implement default-deny firewall policies immediately."
+                    }
+                },
+                {
+                    "id": "net-2",
+                    "text": "Is network segmentation implemented to isolate sensitive workloads?",
+                    "category": "segmentation",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Great! Network segmentation limits lateral movement.",
+                        "partial": "Complete network segmentation for all critical systems.",
+                        "no": "HIGH RISK: Flat networks allow attackers to move freely."
+                    }
+                },
+                {
+                    "id": "net-3",
+                    "text": "Are all public-facing services protected by DDoS mitigation?",
+                    "category": "protection",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Well protected! Keep DDoS mitigation active.",
+                        "partial": "Extend DDoS protection to all public endpoints.",
+                        "no": "Consider implementing DDoS mitigation to ensure availability."
+                    }
+                },
+                {
+                    "id": "net-4",
+                    "text": "Is a Web Application Firewall (WAF) deployed for web applications?",
+                    "category": "protection",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Excellent! WAF protects against common web exploits.",
+                        "partial": "Deploy WAF for all internet-facing web applications.",
+                        "no": "Implement WAF to defend against OWASP Top 10 vulnerabilities."
+                    }
+                }
+            ]
+        },
+        {
+            "id": "data-protection",
+            "name": "Data Protection",
+            "weight": 0.20,
+            "description": "Review encryption, data classification, and backup strategies",
+            "icon": "🔒",
+            "questions": [
+                {
+                    "id": "data-1",
+                    "text": "Is data encrypted at rest using strong encryption algorithms?",
+                    "category": "encryption",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Great! Encryption at rest protects against physical theft.",
+                        "partial": "Encrypt all sensitive data stores immediately.",
+                        "no": "CRITICAL: Unencrypted data is vulnerable to breaches."
+                    }
+                },
+                {
+                    "id": "data-2",
+                    "text": "Is data encrypted in transit using TLS 1.2 or higher?",
+                    "category": "encryption",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Excellent! Keep using modern TLS versions.",
+                        "partial": "Upgrade all connections to TLS 1.2+.",
+                        "no": "CRITICAL: Unencrypted traffic can be intercepted."
+                    }
+                },
+                {
+                    "id": "data-3",
+                    "text": "Are automated backups configured and tested regularly?",
+                    "category": "backup",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Great! Tested backups ensure disaster recovery readiness.",
+                        "partial": "Implement regular backup testing procedures.",
+                        "no": "HIGH RISK: Untested backups may fail during recovery."
+                    }
+                },
+                {
+                    "id": "data-4",
+                    "text": "Is sensitive data classified and labeled appropriately?",
+                    "category": "classification",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Well done! Data classification enables proper protection.",
+                        "partial": "Complete data classification for all systems.",
+                        "no": "Implement data classification to prioritize security controls."
+                    }
+                },
+                {
+                    "id": "data-5",
+                    "text": "Are encryption keys managed using a dedicated key management service?",
+                    "category": "encryption",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Excellent! Centralized key management improves security.",
+                        "partial": "Migrate all keys to a key management service.",
+                        "no": "Implement KMS to protect encryption keys properly."
+                    }
+                }
+            ]
+        },
+        {
+            "id": "logging",
+            "name": "Logging & Monitoring",
+            "weight": 0.15,
+            "description": "Evaluate logging practices, monitoring coverage, and alerting",
+            "icon": "📊",
+            "questions": [
+                {
+                    "id": "log-1",
+                    "text": "Are audit logs enabled for all critical systems and services?",
+                    "category": "logging",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Great! Comprehensive logging supports forensics.",
+                        "partial": "Enable logging for all critical infrastructure.",
+                        "no": "CRITICAL: Missing logs prevent incident detection and investigation."
+                    }
+                },
+                {
+                    "id": "log-2",
+                    "text": "Are logs centralized and stored securely for at least 90 days?",
+                    "category": "storage",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Excellent! Centralized logs enable effective monitoring.",
+                        "partial": "Centralize all logs and extend retention period.",
+                        "no": "Implement centralized logging with adequate retention."
+                    }
+                },
+                {
+                    "id": "log-3",
+                    "text": "Are automated alerts configured for security-critical events?",
+                    "category": "alerting",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Great! Automated alerts enable rapid response.",
+                        "partial": "Configure alerts for all critical security events.",
+                        "no": "HIGH RISK: Without alerts, threats go undetected."
+                    }
+                },
+                {
+                    "id": "log-4",
+                    "text": "Is real-time monitoring implemented for infrastructure and applications?",
+                    "category": "monitoring",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Well done! Real-time monitoring catches issues early.",
+                        "partial": "Expand monitoring coverage to all systems.",
+                        "no": "Implement comprehensive real-time monitoring."
+                    }
+                }
+            ]
+        },
+        {
+            "id": "configuration",
+            "name": "Configuration Management",
+            "weight": 0.15,
+            "description": "Check infrastructure-as-code, hardening, and patch management",
+            "icon": "⚙️",
+            "questions": [
+                {
+                    "id": "config-1",
+                    "text": "Is infrastructure defined as code and version-controlled?",
+                    "category": "iac",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Excellent! IaC enables consistent and auditable deployments.",
+                        "partial": "Complete IaC adoption for all infrastructure.",
+                        "no": "Implement Infrastructure-as-Code for better control and auditability."
+                    }
+                },
+                {
+                    "id": "config-2",
+                    "text": "Are systems hardened according to industry benchmarks (CIS, NIST)?",
+                    "category": "hardening",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Great! Hardening reduces attack surface.",
+                        "partial": "Apply hardening benchmarks to all systems.",
+                        "no": "HIGH RISK: Unhardened systems have excessive vulnerabilities."
+                    }
+                },
+                {
+                    "id": "config-3",
+                    "text": "Is automated patch management implemented for all systems?",
+                    "category": "patching",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Excellent! Automated patching reduces exposure window.",
+                        "partial": "Automate patching for all systems.",
+                        "no": "CRITICAL: Unpatched systems are vulnerable to known exploits."
+                    }
+                },
+                {
+                    "id": "config-4",
+                    "text": "Are configuration changes tracked and audited?",
+                    "category": "tracking",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Well done! Configuration tracking enables rollback and forensics.",
+                        "partial": "Implement comprehensive configuration auditing.",
+                        "no": "Implement change tracking to maintain security posture."
+                    }
+                }
+            ]
+        },
+        {
+            "id": "incident-response",
+            "name": "Incident Response",
+            "weight": 0.15,
+            "description": "Assess incident response planning and readiness",
+            "icon": "🚨",
+            "questions": [
+                {
+                    "id": "ir-1",
+                    "text": "Is a documented incident response plan in place and tested regularly?",
+                    "category": "planning",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Excellent! Tested IR plans enable effective response.",
+                        "partial": "Document and test your incident response plan.",
+                        "no": "CRITICAL: Without an IR plan, incidents cause extended damage."
+                    }
+                },
+                {
+                    "id": "ir-2",
+                    "text": "Is there a designated security incident response team?",
+                    "category": "team",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Great! A dedicated team ensures rapid response.",
+                        "partial": "Formalize and train your incident response team.",
+                        "no": "Designate and train an incident response team."
+                    }
+                },
+                {
+                    "id": "ir-3",
+                    "text": "Are incident response drills conducted at least annually?",
+                    "category": "testing",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Well done! Regular drills improve response readiness.",
+                        "partial": "Schedule and conduct annual IR drills.",
+                        "no": "Implement regular tabletop exercises to test IR capabilities."
+                    }
+                },
+                {
+                    "id": "ir-4",
+                    "text": "Are communication channels and escalation procedures defined?",
+                    "category": "communication",
+                    "answerOptions": [
+                        {
+                            "value": "yes",
+                            "label": "Yes",
+                            "score": 100
+                        },
+                        {
+                            "value": "partial",
+                            "label": "Partially Implemented",
+                            "score": 50
+                        },
+                        {
+                            "value": "no",
+                            "label": "No",
+                            "score": 0
+                        },
+                        {
+                            "value": "na",
+                            "label": "Not Applicable",
+                            "score": null
+                        }
+                    ],
+                    "recommendations": {
+                        "yes": "Excellent! Clear communication prevents confusion during incidents.",
+                        "partial": "Document escalation procedures and communication channels.",
+                        "no": "Define clear incident communication and escalation paths."
+                    }
+                }
+            ]
+        }
+    ]
+}
