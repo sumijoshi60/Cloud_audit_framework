@@ -6,42 +6,43 @@
  */
 export function calculateDomainScore(domain, responses = {}) {
   const questions = domain.questions || [];
-  const totalQuestions = questions.length;
-  
-  let totalPossibleScore = 0;
-  let earnedScore = 0;
-  let answeredCount = 0;
 
-  questions.forEach((question) => {
-    const userAnswer = responses[question.id];
-    const answerOption = question.answerOptions.find(opt => opt.value === userAnswer);
-    
-    // Find max possible score for this question (excluding N/A)
-    const maxScore = Math.max(
-      ...question.answerOptions
-        .filter(opt => opt.score !== null)
-        .map(opt => opt.score)
-    );
-    
-    if (userAnswer && answerOption) {
-      answeredCount++;
-      
-      // Only count if answer is not N/A
-      if (answerOption.score !== null) {
-        totalPossibleScore += maxScore;
-        earnedScore += answerOption.score;
-      }
-    }
+  // Separate applicable questions (exclude N/A)
+  const applicableQuestions = questions.filter(q => {
+    const answer = responses[q.id];
+    // Check if answered and not N/A
+    return answer && answer !== 'na';
   });
 
-  const percentage = totalPossibleScore > 0 ? Math.round((earnedScore / totalPossibleScore) * 100) : 0;
+  // Calculate total applicable weight
+  // If weights missing, default to equal weighting (1.0 / total count)
+  const totalWeight = applicableQuestions.reduce((sum, q) =>
+    sum + (q.questionWeight || 1.0 / questions.length), 0
+  );
+
+  // Calculate weighted score
+  const weightedScore = applicableQuestions.reduce((sum, q) => {
+    const answer = responses[q.id];
+    const option = q.answerOptions.find(opt => opt.value === answer);
+    const weight = q.questionWeight || 1.0 / questions.length;
+
+    // Safety check if option exists and has score
+    if (option && option.score !== null) {
+      return sum + (option.score * weight);
+    }
+    return sum;
+  }, 0);
+
+  // Normalize to 0-100 scale
+  // If no applicable questions, score is 0
+  const percentage = totalWeight > 0 ? (weightedScore / totalWeight) : 0;
 
   return {
-    score: earnedScore,
-    answeredCount,
-    totalCount: totalQuestions,
-    percentage,
-    maxPossibleScore: totalPossibleScore
+    score: weightedScore, // potentially weighted raw score
+    answeredCount: applicableQuestions.length,
+    totalCount: questions.length,
+    percentage: Math.round(percentage),
+    maxPossibleScore: 100 // Normalized max is always 100%
   };
 }
 
@@ -55,18 +56,18 @@ export function calculateOverallScore(domains, allResponses = {}) {
   let weightedScoreSum = 0;
   let totalAnswered = 0;
   let totalQuestions = 0;
-  
+
   const domainScores = domains.map((domain) => {
     const domainResponses = allResponses[domain.id] || {};
     const result = calculateDomainScore(domain, domainResponses);
-    
+
     totalAnswered += result.answeredCount;
     totalQuestions += result.totalCount;
-    
+
     // Weight the percentage by domain weight
     const weightedScore = result.percentage * domain.weight;
     weightedScoreSum += weightedScore;
-    
+
     return {
       ...domain,
       ...result,
@@ -123,15 +124,15 @@ export function generateRecommendations(domainScores, allResponses = {}) {
 
   domainScores.forEach((domain) => {
     const domainResponses = allResponses[domain.id] || {};
-    
+
     domain.questions.forEach((question) => {
       const userAnswer = domainResponses[question.id];
-      
+
       if (userAnswer && question.recommendations && question.recommendations[userAnswer]) {
         const answerOption = question.answerOptions.find(opt => opt.value === userAnswer);
-        const priority = answerOption?.score === 0 ? 'High' : 
-                        answerOption?.score === 50 ? 'Medium' : 'Low';
-        
+        const priority = answerOption?.score === 0 ? 'High' :
+          answerOption?.score === 50 ? 'Medium' : 'Low';
+
         // Only show recommendations for non-perfect answers
         if (answerOption?.score !== 100 && answerOption?.score !== null) {
           recommendations.push({

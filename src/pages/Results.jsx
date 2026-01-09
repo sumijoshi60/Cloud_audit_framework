@@ -1,21 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuditContext } from '../context/AuditContext';
 import { generateRecommendations } from '../utils/scoring';
 import { exportAuditData } from '../utils/storage';
+import { generateExecutiveSummaryPDF, getTopRisks } from '../utils/pdfExport';
 import Layout from '../components/common/Layout';
 import Button from '../components/common/Button';
 import ScoreCard from '../components/results/ScoreCard';
 import DomainBreakdown from '../components/results/DomainBreakdown';
 import RecommendationList from '../components/results/RecommendationList';
+import ExecutiveSummary from '../components/results/ExecutiveSummary';
 import './Results.css';
 
 export default function Results() {
     const navigate = useNavigate();
-    const { calculateScores, responses, clearAllResponses } = useContext(AuditContext);
+    const { framework, calculateScores, responses, clearAllResponses } = useContext(AuditContext);
+    const [activeTab, setActiveTab] = useState('results');
+    const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
 
     const scores = calculateScores();
     const recommendations = generateRecommendations(scores.domains, responses);
+    const topRisks = getTopRisks(scores.domains, responses, framework, 5);
 
     const handleRetakeAssessment = () => {
         if (window.confirm('Are you sure you want to clear all responses and start over?')) {
@@ -40,6 +45,23 @@ export default function Results() {
             alert('Audit data exported successfully!');
         } else {
             alert('Failed to export data. Please try again.');
+        }
+    };
+
+    const handleDownloadPDF = async () => {
+        setIsGeneratingPDF(true);
+        try {
+            const success = await generateExecutiveSummaryPDF('executive-summary');
+            if (success) {
+                alert('PDF generated successfully!');
+            } else {
+                alert('Failed to generate PDF. Please try again.');
+            }
+        } catch (error) {
+            console.error('PDF generation error:', error);
+            alert('An error occurred while generating the PDF.');
+        } finally {
+            setIsGeneratingPDF(false);
         }
     };
 
@@ -69,7 +91,24 @@ export default function Results() {
                     </p>
                 </div>
 
-                <div className="results-grid">
+                {/* Tab Navigation */}
+                <div className="results-tabs">
+                    <button
+                        className={`tab-button ${activeTab === 'results' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('results')}
+                    >
+                        📊 Detailed Results
+                    </button>
+                    <button
+                        className={`tab-button ${activeTab === 'summary' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('summary')}
+                    >
+                        📄 Executive Summary
+                    </button>
+                </div>
+
+                {/* Results Tab */}
+                <div className={`results-grid ${activeTab !== 'results' ? 'hidden' : ''}`}>
                     <div className="results-main">
                         <ScoreCard
                             score={scores.overall}
@@ -82,7 +121,14 @@ export default function Results() {
                                 📝 Review Answers
                             </Button>
                             <Button onClick={handleExport} variant="secondary">
-                                💾 Export Data
+                                💾 Export JSON
+                            </Button>
+                            <Button
+                                onClick={handleDownloadPDF}
+                                variant="secondary"
+                                disabled={isGeneratingPDF}
+                            >
+                                {isGeneratingPDF ? '⏳ Generating PDF...' : '📥 Download PDF'}
                             </Button>
                             <Button onClick={handleRetakeAssessment} variant="danger">
                                 🔄 Retake Assessment
@@ -96,6 +142,28 @@ export default function Results() {
                             <RecommendationList recommendations={recommendations} />
                         </div>
                     </div>
+                </div>
+
+                {/* Executive Summary Tab */}
+                <div className={`summary-tab-content ${activeTab !== 'summary' ? 'hidden' : ''}`}>
+                    <div className="summary-actions">
+                        <Button
+                            onClick={handleDownloadPDF}
+                            variant="primary"
+                            disabled={isGeneratingPDF}
+                        >
+                            {isGeneratingPDF ? '⏳ Generating PDF...' : '📥 Download PDF Report'}
+                        </Button>
+                    </div>
+
+                    <ExecutiveSummary
+                        scores={scores}
+                        recommendations={recommendations}
+                        framework={framework}
+                        responses={responses}
+                        topRisks={topRisks}
+                        isPrintMode={false}
+                    />
                 </div>
             </div>
         </Layout>

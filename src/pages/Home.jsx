@@ -8,7 +8,7 @@ import './Home.css';
 
 export default function Home() {
     const navigate = useNavigate();
-    const { framework, hasExistingAudit } = useContext(AuditContext);
+    const { framework, hasExistingAudit, clearAllResponses } = useContext(AuditContext);
     const hasExisting = hasExistingAudit();
 
     const handleStartAssessment = () => {
@@ -17,6 +17,13 @@ export default function Home() {
 
     const handleViewResults = () => {
         navigate('/results');
+    };
+
+    const handleNewAssessment = () => {
+        if (window.confirm('Are you sure you want to start a new assessment? This will clear your current progress.')) {
+            clearAllResponses();
+            navigate('/assessment');
+        }
     };
 
     return (
@@ -33,9 +40,14 @@ export default function Home() {
                             {hasExisting ? '📝 Continue Assessment' : '🚀 Start New Assessment'}
                         </Button>
                         {hasExisting && (
-                            <Button onClick={handleViewResults} variant="secondary">
-                                📊 View Results
-                            </Button>
+                            <>
+                                <Button onClick={handleViewResults} variant="secondary">
+                                    📊 View Results
+                                </Button>
+                                <Button onClick={handleNewAssessment} variant="danger">
+                                    🔄 Start New Assessment
+                                </Button>
+                            </>
                         )}
                     </div>
                 </section>

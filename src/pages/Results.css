@@ -4,7 +4,7 @@
 
 .results-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .results-title {
@@ -24,6 +24,39 @@
     margin: 0;
 }
 
+/* Tab Navigation */
+.results-tabs {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.tab-button {
+    padding: 1rem 2rem;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #6b7280;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: -2px;
+}
+
+.tab-button:hover {
+    color: #667eea;
+    background: rgba(102, 126, 234, 0.05);
+}
+
+.tab-button.active {
+    color: #667eea;
+    border-bottom-color: #667eea;
+}
+
+/* Results Grid */
 .results-grid {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -72,6 +105,24 @@
     margin: 0 0 2rem 0;
 }
 
+/* Summary Tab Content */
+.summary-tab-content {
+    max-width: 100%;
+}
+
+.summary-actions {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.summary-actions button {
+    min-width: 250px;
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -91,5 +142,43 @@
 
     .results-main {
         position: static;
+    }
+
+    .results-tabs {
+        gap: 0.5rem;
+    }
+
+    .tab-button {
+        padding: 0.75rem 1rem;
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .results-title {
+        font-size: 2rem;
+    }
+
+    .results-tabs {
+        flex-direction: column;
+        border-bottom: none;
+    }
+
+    .tab-button {
+        border-bottom: none;
+        border-left: 3px solid transparent;
+        text-align: left;
+        margin-bottom: 0;
+        margin-left: -2px;
+    }
+
+    .tab-button.active {
+        border-left-color: #667eea;
+        border-bottom-color: transparent;
+    }
+
+    .summary-actions button {
+        width: 100%;
+        min-width: auto;
     }
 }

@@ -1,0 +1,451 @@
+.executive-summary {
+    background: white;
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #1f2937;
+    line-height: 1.6;
+}
+
+/* Title Page / Header */
+.summary-header {
+    text-align: center;
+    padding: 3rem 2rem;
+    border-bottom: 3px solid #667eea;
+    margin-bottom: 2rem;
+}
+
+.summary-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #667eea;
+    margin: 0 0 0.5rem 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.summary-subtitle {
+    font-size: 1.5rem;
+    color: #6b7280;
+    margin: 0 0 1.5rem 0;
+    font-weight: 400;
+}
+
+.summary-meta {
+    margin-bottom: 2rem;
+}
+
+.summary-date {
+    font-size: 1rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+.summary-score-badge {
+    display: inline-block;
+    padding: 2rem;
+    border: 4px solid;
+    border-radius: 12px;
+    background: #f9fafb;
+    margin-top: 1.5rem;
+}
+
+.summary-score-badge .score-value {
+    font-size: 3rem;
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    line-height: 1;
+}
+
+.summary-score-badge .score-label {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0.5rem 0;
+}
+
+.summary-score-badge .risk-level {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    color: white;
+    font-weight: 700;
+    margin-top: 0.5rem;
+}
+
+/* Sections */
+.summary-section {
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.5rem;
+    page-break-inside: avoid;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: #1f2937;
+    margin: 0 0 1.5rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e5e7eb;
+    font-family: 'Inter', sans-serif;
+}
+
+.subsection {
+    margin-bottom: 1.5rem;
+}
+
+.subsection h4 {
+    font-size: 1.125rem;
+    color: #374151;
+    margin: 0 0 0.75rem 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.subsection p {
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+}
+
+.subsection ul {
+    margin: 0 0 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.subsection li {
+    margin-bottom: 0.5rem;
+}
+
+.scope-list strong {
+    color: #1f2937;
+}
+
+.domain-weight-inline {
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+/* Overall Posture */
+.posture-summary {
+    background: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.posture-metrics {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.metric-item {
+    text-align: center;
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #667eea;
+    font-family: 'Inter', sans-serif;
+}
+
+.metric-label {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+}
+
+.posture-interpretation h4 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem 0;
+    color: #374151;
+    font-family: 'Inter', sans-serif;
+}
+
+.posture-interpretation p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* Domain Table */
+.domain-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+}
+
+.domain-table th {
+    background: #f3f4f6;
+    padding: 0.75rem;
+    text-align: left;
+    font-weight: 600;
+    color: #374151;
+    border-bottom: 2px solid #e5e7eb;
+    font-family: 'Inter', sans-serif;
+}
+
+.domain-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.domain-table tbody tr:hover {
+    background: #f9fafb;
+}
+
+.domain-icon-small {
+    margin-right: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.score-cell {
+    font-family: 'Inter', sans-serif;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+}
+
+.finding-strength {
+    color: #10b981;
+}
+
+.finding-gap {
+    color: #ef4444;
+}
+
+/* Risks List */
+.no-risks {
+    text-align: center;
+    padding: 2rem;
+    background: #d1fae5;
+    border-radius: 8px;
+    color: #065f46;
+    font-weight: 600;
+}
+
+.risks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.risk-item {
+    border: 1px solid #e5e7eb;
+    border-left: 4px solid #ef4444;
+    padding: 1.25rem;
+    border-radius: 6px;
+    background: #fefefe;
+    page-break-inside: avoid;
+}
+
+.risk-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.risk-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: #667eea;
+    color: white;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.875rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.risk-priority {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+}
+
+.priority-high {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.priority-medium {
+    background: #fed7aa;
+    color: #92400e;
+}
+
+.risk-domain {
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.risk-control,
+.risk-impact,
+.risk-action {
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.risk-control strong,
+.risk-impact strong,
+.risk-action strong {
+    color: #374151;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Actions */
+.actions-group {
+    margin-bottom: 1.5rem;
+}
+
+.actions-group h4 {
+    font-size: 1.125rem;
+    color: #374151;
+    margin: 0 0 0.75rem 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.actions-list {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.actions-list li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+
+.actions-list strong {
+    color: #667eea;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Assessment Notes */
+.assessment-notes {
+    background: #fffbeb;
+    border: 2px solid #fbbf24;
+    border-radius: 8px;
+}
+
+.note-box {
+    margin-bottom: 1.5rem;
+}
+
+.note-box:last-child {
+    margin-bottom: 0;
+}
+
+.note-box h4 {
+    font-size: 1rem;
+    color: #92400e;
+    margin: 0 0 0.75rem 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.note-box ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.note-box li {
+    margin-bottom: 0.75rem;
+    color: #78350f;
+}
+
+.note-box strong {
+    color: #92400e;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Footer */
+.summary-footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 2px solid #e5e7eb;
+    margin-top: 2rem;
+}
+
+.confidential {
+    font-size: 0.875rem;
+    color: #ef4444;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.generated-by {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+/* Print Mode Styles */
+.executive-summary.print-mode {
+    padding: 0;
+    max-width: none;
+}
+
+.print-mode .summary-section {
+    page-break-inside: avoid;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .summary-header {
+        padding: 2rem 1rem;
+    }
+
+    .summary-title {
+        font-size: 2rem;
+    }
+
+    .summary-section {
+        padding: 1rem;
+    }
+
+    .posture-metrics {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .domain-table {
+        font-size: 0.85rem;
+    }
+
+    .domain-table th,
+    .domain-table td {
+        padding: 0.5rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .executive-summary {
+        max-width: none;
+        background: white;
+    }
+
+    .summary-section {
+        page-break-inside: avoid;
+    }
+
+    .risk-item {
+        page-break-inside: avoid;
+    }
+
+    /* Remove shadows and adjust colors for print */
+    .summary-score-badge,
+    .posture-summary,
+    .risk-item {
+        box-shadow: none;
+    }
+}

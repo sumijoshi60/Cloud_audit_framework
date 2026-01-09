@@ -12,6 +12,8 @@
                     "id": "iam-1",
                     "text": "Is Multi-Factor Authentication (MFA) enabled for all privileged users?",
                     "category": "authentication",
+                    "questionWeight": 0.30,
+                    "criticality": "critical",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -44,6 +46,8 @@
                     "id": "iam-2",
                     "text": "Are user permissions reviewed and updated regularly (at least quarterly)?",
                     "category": "authorization",
+                    "questionWeight": 0.15,
+                    "criticality": "medium",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -76,6 +80,8 @@
                     "id": "iam-3",
                     "text": "Is the principle of least privilege enforced for all user roles?",
                     "category": "authorization",
+                    "questionWeight": 0.25,
+                    "criticality": "critical",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -108,6 +114,8 @@
                     "id": "iam-4",
                     "text": "Are service accounts and API keys rotated regularly?",
                     "category": "credentials",
+                    "questionWeight": 0.20,
+                    "criticality": "high",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -140,6 +148,8 @@
                     "id": "iam-5",
                     "text": "Is Single Sign-On (SSO) implemented for centralized authentication?",
                     "category": "authentication",
+                    "questionWeight": 0.10,
+                    "criticality": "medium",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -181,6 +191,8 @@
                     "id": "net-1",
                     "text": "Are network security groups/firewalls configured to deny all traffic by default?",
                     "category": "firewall",
+                    "questionWeight": 0.35,
+                    "criticality": "critical",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -213,6 +225,8 @@
                     "id": "net-2",
                     "text": "Is network segmentation implemented to isolate sensitive workloads?",
                     "category": "segmentation",
+                    "questionWeight": 0.30,
+                    "criticality": "high",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -245,6 +259,8 @@
                     "id": "net-3",
                     "text": "Are all public-facing services protected by DDoS mitigation?",
                     "category": "protection",
+                    "questionWeight": 0.15,
+                    "criticality": "medium",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -277,6 +293,8 @@
                     "id": "net-4",
                     "text": "Is a Web Application Firewall (WAF) deployed for web applications?",
                     "category": "protection",
+                    "questionWeight": 0.20,
+                    "criticality": "high",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -318,6 +336,8 @@
                     "id": "data-1",
                     "text": "Is data encrypted at rest using strong encryption algorithms?",
                     "category": "encryption",
+                    "questionWeight": 0.25,
+                    "criticality": "critical",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -350,6 +370,8 @@
                     "id": "data-2",
                     "text": "Is data encrypted in transit using TLS 1.2 or higher?",
                     "category": "encryption",
+                    "questionWeight": 0.25,
+                    "criticality": "critical",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -382,6 +404,8 @@
                     "id": "data-3",
                     "text": "Are automated backups configured and tested regularly?",
                     "category": "backup",
+                    "questionWeight": 0.20,
+                    "criticality": "high",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -414,6 +438,8 @@
                     "id": "data-4",
                     "text": "Is sensitive data classified and labeled appropriately?",
                     "category": "classification",
+                    "questionWeight": 0.10,
+                    "criticality": "medium",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -446,6 +472,8 @@
                     "id": "data-5",
                     "text": "Are encryption keys managed using a dedicated key management service?",
                     "category": "encryption",
+                    "questionWeight": 0.20,
+                    "criticality": "high",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -487,6 +515,8 @@
                     "id": "log-1",
                     "text": "Are audit logs enabled for all critical systems and services?",
                     "category": "logging",
+                    "questionWeight": 0.30,
+                    "criticality": "high",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -519,6 +549,8 @@
                     "id": "log-2",
                     "text": "Are logs centralized and stored securely for at least 90 days?",
                     "category": "storage",
+                    "questionWeight": 0.25,
+                    "criticality": "high",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -551,6 +583,8 @@
                     "id": "log-3",
                     "text": "Are automated alerts configured for security-critical events?",
                     "category": "alerting",
+                    "questionWeight": 0.15,
+                    "criticality": "medium",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -583,6 +617,8 @@
                     "id": "log-4",
                     "text": "Is real-time monitoring implemented for infrastructure and applications?",
                     "category": "monitoring",
+                    "questionWeight": 0.30,
+                    "criticality": "high",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -624,6 +660,8 @@
                     "id": "config-1",
                     "text": "Is infrastructure defined as code and version-controlled?",
                     "category": "iac",
+                    "questionWeight": 0.20,
+                    "criticality": "medium",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -656,6 +694,8 @@
                     "id": "config-2",
                     "text": "Are systems hardened according to industry benchmarks (CIS, NIST)?",
                     "category": "hardening",
+                    "questionWeight": 0.30,
+                    "criticality": "high",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -688,6 +728,8 @@
                     "id": "config-3",
                     "text": "Is automated patch management implemented for all systems?",
                     "category": "patching",
+                    "questionWeight": 0.35,
+                    "criticality": "critical",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -720,6 +762,8 @@
                     "id": "config-4",
                     "text": "Are configuration changes tracked and audited?",
                     "category": "tracking",
+                    "questionWeight": 0.15,
+                    "criticality": "medium",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -761,6 +805,8 @@
                     "id": "ir-1",
                     "text": "Is a documented incident response plan in place and tested regularly?",
                     "category": "planning",
+                    "questionWeight": 0.30,
+                    "criticality": "high",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -793,6 +839,8 @@
                     "id": "ir-2",
                     "text": "Is there a designated security incident response team?",
                     "category": "team",
+                    "questionWeight": 0.30,
+                    "criticality": "high",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -825,6 +873,8 @@
                     "id": "ir-3",
                     "text": "Are incident response drills conducted at least annually?",
                     "category": "testing",
+                    "questionWeight": 0.15,
+                    "criticality": "medium",
                     "answerOptions": [
                         {
                             "value": "yes",
@@ -857,6 +907,8 @@
                     "id": "ir-4",
                     "text": "Are communication channels and escalation procedures defined?",
                     "category": "communication",
+                    "questionWeight": 0.25,
+                    "criticality": "high",
                     "answerOptions": [
                         {
                             "value": "yes",
